@@ -4,6 +4,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "lodash": "^4.17.11",
+    "mersennetwister": "^0.2.3",
     "mongodb-stitch-browser-sdk": "^4.0.13",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
