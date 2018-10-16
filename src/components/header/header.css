@@ -1,0 +1,15 @@
+.header {
+  text-align: left;
+  width: 60%;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.header-title {
+  font-size: 2em;
+  /* font-weight: lighter; */
+  font-weight: normal;
+  letter-spacing: 3px;
+  margin-bottom: 5vh;
+  margin-top: 14vh;
+}

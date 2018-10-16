@@ -1,0 +1,21 @@
+
+.home-svg {
+  fill: none;
+  stroke: rgb(158, 198, 184) !important;
+  stroke-width: 1px;
+  margin: 0;
+  position: fixed;
+  left: 20%;
+  top: 20%;
+  z-index: -1;
+}
+
+.home-links {
+  text-align: left;
+  margin-left: 20%;
+}
+
+.home-link {
+  margin-left: 10px;
+  margin-top: 10px;
+}

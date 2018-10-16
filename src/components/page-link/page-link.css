@@ -1,0 +1,10 @@
+.page-link {
+  border-bottom: 1px solid #aaa;
+  color: #fafafa;
+  display:inline-block;
+  padding-bottom: 2px;
+}
+
+.page-link:hover {
+  cursor: pointer;
+}
