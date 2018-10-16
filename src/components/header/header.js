@@ -8,7 +8,7 @@ class Header extends Component {
       <div className="header">
         <Link to="/">
           <h1 className="header-title">
-            %%NAME%%
+            &#9702; Sofloo &#9702;
           </h1>
         </Link>
       </div>

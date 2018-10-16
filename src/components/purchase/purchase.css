@@ -1,0 +1,96 @@
+
+
+.purchase {
+  background-color: #F5F5F5;
+  border-radius: 2px;
+  box-shadow: 0 0 2px 1px rgba(0,0,0,.15);
+  color: #333;
+  left: 0; 
+  margin-left: auto; 
+  margin-right: auto; 
+  padding: 30px;
+  position: fixed;
+  right: 0;
+  text-align: left;
+  top: 20vh;
+  width: 600px;
+}
+
+.purchase-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.purchase-background {
+  background-color: rgba(0, 0, 0, 0.15);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.purchase-info-title {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: right;
+}
+
+.sc-placement-option {
+  border: 1px solid black;
+  border-radius: 2px;
+}
+
+.purchase-info-item {
+  text-align: right;
+}
+
+.purchase-add-another {
+  color: #66F;
+  padding-top: 6px;
+}
+.purchase-add-another:hover {
+  cursor: pointer;
+}
+
+.purchase-subtotal {
+  text-align: right;
+  margin-right: 6px;
+}
+
+.purchase-remove-item {
+  font-weight: bold;
+}
+
+.purchase-subtotal-container {
+  border: 1px solid black;
+  border-radius: 2px;
+  padding: 0px 4px;
+}
+
+.purchase-loader {
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+}
+.purchase-loader:after {
+  content: " ";
+  display: block;
+  width: 46px;
+  height: 46px;
+  margin: 1px;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: purchase-loader 1.2s linear infinite;
+}
+@keyframes purchase-loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,15 +1,18 @@
 .header {
+  background-color: #282c34;
+  margin: 0;
   text-align: left;
-  width: 60%;
-  margin-left: 20%;
-  margin-right: 20%;
 }
 
 .header-title {
+  color: #f5f5f5;
   font-size: 2em;
   /* font-weight: lighter; */
   font-weight: normal;
   letter-spacing: 3px;
-  margin-bottom: 5vh;
-  margin-top: 14vh;
+  margin: 0;
+  padding: 6px;
+  padding-left: 2em;
+  /* margin-bottom: 5vh; */
+  /* margin-top: 14vh; */
 }
