@@ -20,7 +20,7 @@ class About extends Component {
         </div>
         <div className="about-content">
           <h2 className="about-title">about</h2>
-          <p className="about-content">%%NAME%% is a design studio based in NYC.</p>
+          <p className="about-content">Sofloo is a design studio based in NYC.</p>
           <p className="about-content">Est. 1995</p>
         </div>
       </div>

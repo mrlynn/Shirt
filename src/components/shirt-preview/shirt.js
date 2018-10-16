@@ -6,7 +6,7 @@ class Shirt extends Component {
   render() {
     return (
       <div className="shirt">
-        Shirt
+        <img className="shirt-preview" alt="t-shirt preview" src="tshirt.png"/>
       </div>
     );
   }

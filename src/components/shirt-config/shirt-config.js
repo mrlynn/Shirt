@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 import './shirt-config.css';
@@ -18,11 +19,7 @@ let selectePlacement = Object.keys(SHIRT_PLACEMENTS)[0];
 
 class ShirtConfig extends Component {
   static propTypes = {
-
-  }
-
-  static defaultProps = {
-
+    orderTShirtButtonClicked: PropTypes.func.isRequired
   }
 
   render() {
@@ -52,12 +49,15 @@ class ShirtConfig extends Component {
             return <img
               className={`sc-placement-option ${selectePlacement === placement ? 'sc-placement-selected' : ''}`}
               key={placement}
-              title={placement}
+              alt={placement}
               src={SHIRT_PLACEMENTS[placement]}
             />;
           })}
         </div>
-        <div className="sc-order-tee shirt-config-option">
+        <div
+          className="sc-order-tee shirt-config-option"
+          onClick={this.props.orderTShirtButtonClicked}
+        >
           order tee
         </div>
         <div className="sc-order-tee shirt-config-option">

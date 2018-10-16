@@ -7,15 +7,22 @@ import Header from '../header';
 import Purchase from '../purchase';
 // import PageLink from '../page-link';
 import ShirtConfig from '../shirt-config';
+import ShirtPreview from '../shirt-preview';
 
 class Home extends Component {
   state = {
-    showPurchaseWindow: true
+    showPurchaseWindow: false
   };
 
   hidePurchaseWindow = () => {
     this.setState({
       showPurchaseWindow: false
+    });
+  }
+
+  showPurchaseWindow = () => {
+    this.setState({
+      showPurchaseWindow: true
     });
   }
 
@@ -33,7 +40,14 @@ class Home extends Component {
             <PageLink linkText="About" linkUrl="about" />
           </div> */}
         </div>
-        <ShirtConfig />
+        <div className="row">
+          <div className="col-8">
+            <ShirtPreview />
+          </div>
+          <div className="col-4">
+            <ShirtConfig orderTShirtButtonClicked={this.showPurchaseWindow}/>
+          </div>
+        </div>
         {showPurchaseWindow && <Purchase hidePurchaseWindow={this.hidePurchaseWindow}/>}
         {/* <svg className="home-svg" height="496" width="596" viewBox="0 0 596 496">
           <defs>

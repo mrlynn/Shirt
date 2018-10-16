@@ -105,7 +105,7 @@ class Purchase extends Component {
             </div>
             <div className="col-1"/>
           </div>
-          <div className="purchase-button">
+          <div className="purchase-checkout-button">
             checkout
           </div>
         </div>
