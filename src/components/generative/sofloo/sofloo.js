@@ -26,10 +26,17 @@ class Sofloo extends Component {
     const renderedDefs = [];
 
     _.each(shapes, (shape, index) => {
+      console.log('shape def shape', shape);
+
       renderedDefs.push(
         <ShapeDef
           id={index}
           key={index}
+          gradientColor={shape.gradientColor}
+          isCurve={shape.isCurve}
+          randomShadow={shape.randomShadow}
+          shape={shape}
+          steps={shape.steps}
         />
       );
     });
@@ -49,6 +56,11 @@ class Sofloo extends Component {
         <Shape
           id={index}
           key={index}
+          gradientColor={shape.gradientColor}
+          isCurve={shape.isCurve}
+          randomShadow={shape.randomShadow}
+          steps={shape.steps}
+          strokePath={shape.strokePath}
         />
       );
     });

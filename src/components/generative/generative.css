@@ -14,3 +14,25 @@
 .generative-next-button:hover {
   cursor: pointer;
 }
+
+.generative-loading-container {
+  height: 500px;
+  margin: auto;
+  position: relative;
+  width: 500px;
+}
+
+.generative-loading-text {
+  color: #333;
+  font-size: 16px;
+  padding-top: 180px;
+}
+
+.generative-loading {
+  margin-top: 18px;
+  width: 50px;
+}
+
+.generative {
+  text-align: center;
+}

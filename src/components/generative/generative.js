@@ -9,7 +9,7 @@ import Sofloo from './sofloo';
 import './generative.css';
 
 const displayHeight = 500;
-const displayWidth = 600;
+const displayWidth = 500;
 
 const randomizeAlgorithm = VERSIONS.FULL_RANDOM;
 
@@ -33,15 +33,14 @@ class Generative extends Component {
       building: true
     });
 
-    setImmediate(() => {
-      // TODO: Something.
+    setTimeout(() => {
       const { shapes } = generateRandomLayout(displayWidth, displayHeight, randomizeAlgorithm);
 
       this.setState({
         building: false,
         shapes
       });
-    });
+    }, 10);
   }
 
   generateClicked = () => {
@@ -53,24 +52,40 @@ class Generative extends Component {
   }
 
   render() {
-    const { shapes } = this.state;
+    const { building, shapes } = this.state;
 
     return (
       <div className="generative">
-        <Sofloo
-          height={displayHeight}
-          setSvgRef={this.setSvgRef}
-          shapes={shapes}
-          width={displayWidth}
-        />
-        <div
-          className="generative-next-button"
-          onClick={this.generateClicked}
-        >Generate</div>
-        <div
-          className="generative-next-button"
-          onClick={this.props.purchaseShirtClicked}
-        >Purchase</div>
+        <div className="row">
+          {building && (
+            <div className="generative-loading-container">
+              <div className="generative-loading-text">
+                Loading...
+              </div>
+              <img
+                className="generative-loading"
+                alt="Loading..."
+                src="loading.gif"
+              />
+            </div>
+          )}
+          {!building && <Sofloo
+            height={displayHeight}
+            setSvgRef={this.setSvgRef}
+            shapes={shapes}
+            width={displayWidth}
+          />}
+        </div>
+        <div className="row">
+          <div
+            className="generative-next-button"
+            onClick={this.generateClicked}
+          >Generate Art</div>
+          <div
+            className="generative-next-button"
+            onClick={this.props.purchaseShirtClicked}
+          >Build a Tee</div>
+        </div>
       </div>
     );
   }

@@ -8,7 +8,6 @@ const Path = props => {
   const {
     clipId,
     hasShadow,
-    hidePath,
     id,
     pathPoints,
     shadowPathPoints,
@@ -35,31 +34,28 @@ const Path = props => {
 
   let pathDString = '';
 
-  // TODO: I was lazy and did gradient shadows hacky, fix.
-  if (!hidePath) {
-    _.each(pathPoints, point => {
-      pathDString += `${point.type} `;
-      if (point.type === 'C') {
-        const cp = point.cp;
-        pathDString += `${cp[0].x} ${cp[0].y} ${cp[1].x} ${cp[1].y} `;
-      } else if (point.type === 'S') {
-        const cp = point.cp;
-        pathDString += `${cp[1].x} ${cp[1].y} `;
-      }
-      pathDString += `${point.x} ${point.y} `;
-    });
-  }
+  _.each(pathPoints, point => {
+    pathDString += `${point.type} `;
+    if (point.type === 'C') {
+      const cp = point.cp;
+      pathDString += `${cp[0].x} ${cp[0].y} ${cp[1].x} ${cp[1].y} `;
+    } else if (point.type === 'S') {
+      const cp = point.cp;
+      pathDString += `${cp[1].x} ${cp[1].y} `;
+    }
+    pathDString += `${point.x} ${point.y} `;
+  });
 
   return (
     <g
       clipPath={clipId ? `url(#${clipId})` : ''}
       id={id}
     >
-      {!hidePath && <path
+      <path
         className={`step-path path-${id}`}
         d={pathDString}
         style={style}
-      />}
+      />
       {hasShadow &&
         <path
           d={shadowPathDString}
@@ -76,7 +72,6 @@ const Path = props => {
 Path.propTypes = {
   clipId: PropTypes.string.isRequired,
   hasShadow: PropTypes.bool.isRequired,
-  hidePath: PropTypes.bool.isRequired,
   id: PropTypes.string.isRequired,
   pathPoints: PropTypes.array.isRequired,
   shadowPathPoints: PropTypes.array,

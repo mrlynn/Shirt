@@ -6,10 +6,10 @@ import Path from '../path';
 
 class Shape extends Component {
   static propTypes = {
-    gradientColor: PropTypes.bool.isRequired,
+    gradientColor: PropTypes.bool,
     isCurve: PropTypes.bool.isRequired,
     randomShadow: PropTypes.bool.isRequired,
-    steps: PropTypes.object.isRequired,
+    steps: PropTypes.array.isRequired,
     strokePath: PropTypes.bool.isRequired
   };
 
@@ -81,8 +81,6 @@ class Shape extends Component {
             clipId={clipId}
             key={`${pathId}-shadow`}
             hasShadow={step.hasShadow}
-            // TODO: I was lazy and did gradient shadows hacky, fix.
-            hidePath
             id={pathId}
             pathPoints={step.pathPoints}
             shadowPathPoints={step.pathPoints}

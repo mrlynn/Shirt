@@ -19,7 +19,8 @@ let selectePlacement = Object.keys(SHIRT_PLACEMENTS)[0];
 
 class ShirtConfig extends Component {
   static propTypes = {
-    orderTShirtButtonClicked: PropTypes.func.isRequired
+    orderTShirtButtonClicked: PropTypes.func.isRequired,
+    shareShirtButtonClicked: PropTypes.func.isRequired
   }
 
   render() {
@@ -60,7 +61,10 @@ class ShirtConfig extends Component {
         >
           order tee
         </div>
-        <div className="sc-order-tee shirt-config-option">
+        <div
+          className="sc-order-tee shirt-config-option"
+          onClick={this.props.shareShirtButtonClicked}
+        >
           share tee
         </div>
       </div>

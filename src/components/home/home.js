@@ -6,6 +6,7 @@ import Generative from '../generative';
 import Header from '../header';
 import Purchase from '../purchase';
 // import PageLink from '../page-link';
+import Share from '../share';
 import ShirtConfig from '../shirt-config';
 import ShirtPreview from '../shirt-preview';
 
@@ -15,7 +16,8 @@ const SHIRT_VIEW = 'SHIRT_VIEW';
 class Home extends Component {
   state = {
     currentPage: GENERATIVE_VIEW,
-    showPurchaseWindow: false
+    showPurchaseWindow: false,
+    showShareWindow: false
   };
 
   hidePurchaseWindow = () => {
@@ -24,9 +26,27 @@ class Home extends Component {
     });
   }
 
+  hideShareWindow = () => {
+    this.setState({
+      showShareWindow: false
+    });
+  }
+
   showPurchaseWindow = () => {
     this.setState({
       showPurchaseWindow: true
+    });
+  }
+
+  showShareWindow = () => {
+    this.setState({
+      showShareWindow: true
+    });
+  }
+
+  regenerateArtClicked = () => {
+    this.setState({
+      currentPage: GENERATIVE_VIEW
     });
   }
 
@@ -37,7 +57,7 @@ class Home extends Component {
   }
 
   render() {
-    const { currentPage, showPurchaseWindow } = this.state;
+    const { currentPage, showPurchaseWindow, showShareWindow } = this.state;
 
     return (
       <div className="home">
@@ -59,13 +79,22 @@ class Home extends Component {
           <React.Fragment>
             <div className="row">
               <div className="col-8">
-                <ShirtPreview />
+                <ShirtPreview
+                  regenerateArtClicked={this.regenerateArtClicked}
+                />
               </div>
               <div className="col-4">
-                <ShirtConfig orderTShirtButtonClicked={this.showPurchaseWindow}/>
+                <ShirtConfig
+                  orderTShirtButtonClicked={this.showPurchaseWindow}
+                  shareShirtButtonClicked={this.showShareWindow}
+                />
               </div>
             </div>
             {showPurchaseWindow && <Purchase hidePurchaseWindow={this.hidePurchaseWindow}/>}
+            {showShareWindow && <Share
+              hideShareWindow={this.hideShareWindow}
+              shareShirtButtonClicked="coming soon"
+            />}
           </React.Fragment>
         )}
         {/* <svg className="home-svg" height="496" width="596" viewBox="0 0 596 496">

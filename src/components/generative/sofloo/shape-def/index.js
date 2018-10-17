@@ -7,10 +7,11 @@ import SvgShadow from '../shadow';
 
 class ShapeDefs extends Component {
   static propTypes = {
-    gradientColor: PropTypes.bool.isRequired,
+    gradientColor: PropTypes.bool,
     isCurve: PropTypes.bool.isRequired,
     randomShadow: PropTypes.bool.isRequired,
-    steps: PropTypes.object.isRequired
+    shape: PropTypes.object.isRequired,
+    steps: PropTypes.array.isRequired
   };
 
   render() {
@@ -20,6 +21,7 @@ class ShapeDefs extends Component {
       id,
       isCurve,
       randomShadow,
+      shape, // Lazy
       steps
     } = this.props;
 
@@ -32,6 +34,13 @@ class ShapeDefs extends Component {
         <SvgShadow
           key="svg-shadow"
           shadowId={shadowId}
+          randomShadow={shape.randomShadow}
+          shadowBlur={shape.shadowBlur}
+          shadowColor={shape.shadowColor}
+          shadowInset={shape.shadowInset}
+          shadowOffsetX={shape.shadowOffsetX}
+          shadowOffsetY={shape.shadowOffsetY}
+          shadowOpacity={shape.shadowOpacity}
         />
       );
     }
@@ -41,6 +50,8 @@ class ShapeDefs extends Component {
         <ColorGradient
           key={`${id}-color-gradient`}
           shapeId={id}
+          colors={shape.colors}
+          gradientDirection={shape.gradientDirection}
         />
       );
     }
@@ -56,6 +67,13 @@ class ShapeDefs extends Component {
           <SvgShadow
             key={`${shadowId}-${pathId}`}
             shadowId={shadowId}
+            randomShadow={shape.randomShadow}
+            shadowBlur={shape.shadowBlur}
+            shadowColor={shape.shadowColor}
+            shadowInset={shape.shadowInset}
+            shadowOffsetX={shape.shadowOffsetX}
+            shadowOffsetY={shape.shadowOffsetY}
+            shadowOpacity={shape.shadowOpacity}
           />
         );
       }
