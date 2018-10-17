@@ -21,7 +21,8 @@ class Home extends Component {
     selectedShirtColor: Object.keys(SHIRT_COLORS)[0],
     selectedPlacement: Object.keys(SHIRT_PLACEMENTS)[0],
     showPayWindow: false,
-    showShareWindow: false
+    showShareWindow: false,
+    currentImageUrl: ""
   };
 
   hidePayWindow = () => {
@@ -72,6 +73,14 @@ class Home extends Component {
     });
   }
 
+  setCurrentImageUrl = url => {
+    this.setState({ currentImageUrl: url })
+  }
+
+  generateMockupsClicked = async (url) => {
+    // const mockups = await this.generateMockups(url)
+  }
+
   sofloo = null;
 
   render() {
@@ -97,6 +106,8 @@ class Home extends Component {
         {currentPage === GENERATIVE_VIEW && (
           <Generative
             purchaseShirtClicked={this.purchaseShirtClicked}
+            setCurrentImageUrl={this.setCurrentImageUrl}
+            generateMockupsClicked={this.generateMockupsClicked}
           />
         )}
         {currentPage === SHIRT_VIEW && (

@@ -3,7 +3,7 @@ import { StripeProvider } from 'react-stripe-elements';
 
 import Router from '../../router';
 
-import { 
+import {
   Stitch,
   AnonymousCredential
 } from "mongodb-stitch-browser-sdk";
@@ -24,11 +24,7 @@ class App extends Component {
 
 const client = Stitch.initializeDefaultAppClient('dankshirts-waggl');
 
-client.auth.loginWithCredential(new AnonymousCredential()).then(user => {
-  return generateMockups('https://s3.amazonaws.com/mdb-sofloo/sofloo1.png');
-}).then(mockups => {
-  console.log(mockups);
-});
+client.auth.loginWithCredential(new AnonymousCredential())
 
 async function generateMockups(graphicURL) {
   const variants = [

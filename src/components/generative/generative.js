@@ -6,12 +6,11 @@ import { generateRandomLayout } from '../../sofloo/layouts';
 
 import Sofloo from './sofloo';
 
-import { 
-  AnonymousCredential,
+import {
   Stitch,
 } from "mongodb-stitch-browser-sdk";
 
-import { 
+import {
   AwsRequest,
   AwsServiceClient,
 } from "mongodb-stitch-browser-services-aws";
@@ -30,7 +29,8 @@ class Generative extends Component {
 
   state = {
     building: true,
-    shapes: []
+    shapes: [],
+    soflooRef: null
   }
 
   componentDidMount = () => {
@@ -38,8 +38,8 @@ class Generative extends Component {
   }
 
   setImageRef = image => {
-    this.image = image;
-    this.generateSoflooImage();
+    this.generateSoflooImage(image);
+    // this.setState({ soflooRef: image })
   }
 
   convertImageToBSONBinaryObject = (file) => {
@@ -56,7 +56,7 @@ class Generative extends Component {
       fileReader.readAsDataURL(file);
     })
   }
-  
+
   handleFileUpload = async (client, png_blob) => {
     // Upload the image binary to S3
     const aws = client.getServiceClient(AwsServiceClient.factory, "aws");
@@ -74,14 +74,15 @@ class Generative extends Component {
         Key: key,
         Body: await this.convertImageToBSONBinaryObject(new File([png_blob], key))
       });
-      
+
     await aws.execute(request.build());
 
     return `https://s3.amazonaws.com/${bucket}/${key}`;
   }
 
-  generateSoflooImage = () => {
-    const svgData = new XMLSerializer().serializeToString(this.image);
+  generateSoflooImage = (image) => {
+    if (!image) { return; }
+    const svgData = new XMLSerializer().serializeToString(image);
 
     const canvas = document.createElement('canvas');
     canvas.width = displayWidth;
@@ -97,19 +98,25 @@ class Generative extends Component {
       canvas.toBlob(async blobData => {
         const client = Stitch.defaultAppClient;
         const url = await this.handleFileUpload(client, blobData);
+        this.props.setCurrentImageUrl(url);
         console.log(url);
       });
     };
   }
 
   generateNewSofloo = () => {
-    this.setState({
-      building: true
-    });
+    this.setState({ building: true });
+
+    const { shapes } = generateRandomLayout(displayWidth, displayHeight, randomizeAlgorithm);
+    this.sofloo = <Sofloo
+      height={displayHeight}
+      setSvgRef={this.setImageRef}
+      shapes={shapes}
+      width={displayWidth}
+    />
 
     setTimeout(() => {
       const { shapes } = generateRandomLayout(displayWidth, displayHeight, randomizeAlgorithm);
-
       this.sofloo = <Sofloo
         height={displayHeight}
         setSvgRef={this.setImageRef}
@@ -128,7 +135,7 @@ class Generative extends Component {
     this.generateNewSofloo();
   }
 
-  sofloo = null;
+  // sofloo = null;
 
   render() {
     const { building } = this.state;
@@ -151,6 +158,10 @@ class Generative extends Component {
           {!building && this.sofloo}
         </div>
         <div className="row">
+          <div
+            className="generative-generate-button sofloo-button"
+            onClick={this.props.generateMockupsClicked}
+          >generate mockups</div>
           <div
             className="generative-generate-button sofloo-button"
             onClick={this.generateClicked}
