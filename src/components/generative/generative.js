@@ -15,7 +15,8 @@ const randomizeAlgorithm = VERSIONS.FULL_RANDOM;
 
 class Generative extends Component {
   static propTypes = {
-    purchaseShirtClicked: PropTypes.func.isRequired
+    purchaseShirtClicked: PropTypes.func.isRequired,
+    setSofloo: PropTypes.func.isRequired
   };
 
   state = {
@@ -28,6 +29,27 @@ class Generative extends Component {
     this.generateNewSofloo();
   }
 
+  generateSoflooImage = () => {
+    const svgData = new XMLSerializer().serializeToString(this.sofloo);
+
+    const canvas = document.createElement('canvas');
+    canvas.width = displayWidth;
+    canvas.height = displayHeight;
+    const ctx = canvas.getContext('2d');
+
+    const img = document.createElement('img');
+    img.setAttribute('src', `data:image/svg+xml;base64,${btoa(svgData)}`);
+
+    img.onload = () => {
+      ctx.drawImage(img, 0, 0, displayWidth, displayHeight);
+
+      canvas.toBlob(blobData => {
+        // const blobUrl = window.URL.createObjectURL(blobData);
+        // downloadURI(blobUrl, `Concentric-${shareableShortString}.png`);
+      });
+    };
+  }
+
   generateNewSofloo = () => {
     this.setState({
       building: true
@@ -35,6 +57,15 @@ class Generative extends Component {
 
     setTimeout(() => {
       const { shapes } = generateRandomLayout(displayWidth, displayHeight, randomizeAlgorithm);
+
+      this.sofloo = <Sofloo
+        height={displayHeight}
+        setSvgRef={this.setSvgRef}
+        shapes={shapes}
+        width={displayWidth}
+      />;
+
+      this.props.setSofloo(this.sofloo);
 
       this.setState({
         building: false,
@@ -51,8 +82,10 @@ class Generative extends Component {
     // TODO: Something.
   }
 
+  sofloo = null;
+
   render() {
-    const { building, shapes } = this.state;
+    const { building } = this.state;
 
     return (
       <div className="generative">
@@ -62,19 +95,14 @@ class Generative extends Component {
               <div className="generative-loading-text">
                 Loading...
               </div>
-              <img
+              {/* <img
                 className="generative-loading"
                 alt="Loading..."
                 src="loading.gif"
-              />
+              /> */}
             </div>
           )}
-          {!building && <Sofloo
-            height={displayHeight}
-            setSvgRef={this.setSvgRef}
-            shapes={shapes}
-            width={displayWidth}
-          />}
+          {!building && this.sofloo}
         </div>
         <div className="row">
           <div

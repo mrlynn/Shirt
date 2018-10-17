@@ -12,3 +12,9 @@ export const VERSIONS = {
   TRIANGLES_MULTI: 'tr-1-m',
   WATER_COLOR: 'wc-1'
 };
+
+
+export const SHIRT_PLACEMENTS = {
+  full: 'full.png',
+  pocket: 'pocket.png'
+};

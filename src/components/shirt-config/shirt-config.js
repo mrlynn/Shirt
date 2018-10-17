@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
+import { SHIRT_PLACEMENTS } from '../../constants';
+
 import './shirt-config.css';
 
 const SHIRT_COLORS = {
@@ -10,20 +12,16 @@ const SHIRT_COLORS = {
 
 let selectedColor = Object.keys(SHIRT_COLORS)[0];
 
-const SHIRT_PLACEMENTS = {
-  main: 'someimage url',
-  pocket: 'some image url'
-};
-
-let selectePlacement = Object.keys(SHIRT_PLACEMENTS)[0];
-
 class ShirtConfig extends Component {
   static propTypes = {
     orderTShirtButtonClicked: PropTypes.func.isRequired,
+    selectedPlacement: PropTypes.string.isRequired,
     shareShirtButtonClicked: PropTypes.func.isRequired
   }
 
   render() {
+    const { selectedPlacement } = this.props;
+
     return (
       <div className="shirt-config">
         <div className="sc-title">
@@ -48,7 +46,7 @@ class ShirtConfig extends Component {
           </div>
           {Object.keys(SHIRT_PLACEMENTS).map((placement) => {
             return <img
-              className={`sc-placement-option ${selectePlacement === placement ? 'sc-placement-selected' : ''}`}
+              className={`sc-placement-option ${selectedPlacement === placement ? 'sc-placement-selected' : ''}`}
               key={placement}
               alt={placement}
               src={SHIRT_PLACEMENTS[placement]}

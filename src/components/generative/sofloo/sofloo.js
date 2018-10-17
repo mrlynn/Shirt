@@ -26,8 +26,6 @@ class Sofloo extends Component {
     const renderedDefs = [];
 
     _.each(shapes, (shape, index) => {
-      console.log('shape def shape', shape);
-
       renderedDefs.push(
         <ShapeDef
           id={index}

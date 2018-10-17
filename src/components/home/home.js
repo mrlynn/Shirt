@@ -10,12 +10,15 @@ import Share from '../share';
 import ShirtConfig from '../shirt-config';
 import ShirtPreview from '../shirt-preview';
 
+import { SHIRT_PLACEMENTS } from '../../constants';
+
 const GENERATIVE_VIEW = 'GENERATIVE_VIEW';
 const SHIRT_VIEW = 'SHIRT_VIEW';
 
 class Home extends Component {
   state = {
     currentPage: GENERATIVE_VIEW,
+    selectedPlacement: Object.keys(SHIRT_PLACEMENTS)[0],
     showPurchaseWindow: false,
     showShareWindow: false
   };
@@ -56,8 +59,20 @@ class Home extends Component {
     });
   }
 
+  selectNewShirtPlacement = newPlacement => {
+    this.setState({
+      selectedPlacement: newPlacement
+    });
+  }
+
+  setSofloo = sofloo => {
+    this.sofloo = sofloo;
+  }
+
+  sofloo = null;
+
   render() {
-    const { currentPage, showPurchaseWindow, showShareWindow } = this.state;
+    const { currentPage, selectedPlacement, showPurchaseWindow, showShareWindow } = this.state;
 
     return (
       <div className="home">
@@ -73,6 +88,7 @@ class Home extends Component {
         {currentPage === GENERATIVE_VIEW && (
           <Generative
             purchaseShirtClicked={this.purchaseShirtClicked}
+            setSofloo={this.setSofloo}
           />
         )}
         {currentPage === SHIRT_VIEW && (
@@ -81,11 +97,14 @@ class Home extends Component {
               <div className="col-8">
                 <ShirtPreview
                   regenerateArtClicked={this.regenerateArtClicked}
+                  selectedPlacement={selectedPlacement}
+                  sofloo={this.sofloo}
                 />
               </div>
               <div className="col-4">
                 <ShirtConfig
                   orderTShirtButtonClicked={this.showPurchaseWindow}
+                  selectedPlacement={selectedPlacement}
                   shareShirtButtonClicked={this.showShareWindow}
                 />
               </div>
@@ -93,7 +112,7 @@ class Home extends Component {
             {showPurchaseWindow && <Purchase hidePurchaseWindow={this.hidePurchaseWindow}/>}
             {showShareWindow && <Share
               hideShareWindow={this.hideShareWindow}
-              shareShirtButtonClicked="coming soon"
+              shareUrl="coming soon"
             />}
           </React.Fragment>
         )}
