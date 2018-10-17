@@ -15,7 +15,6 @@ class Sofloo extends Component {
   };
 
   componentDidMount() {
-    this.props.setSvgRef(this.svgRef);
   }
 
   renderDefs() {
@@ -76,7 +75,7 @@ class Sofloo extends Component {
       <svg
         className="concentric-js-visual-container"
         height={height}
-        ref={ref => { this.svgRef = ref; }}
+        ref={ref => { this.props.setSvgRef(ref); this.svgRef = ref; }}
         style={{
           background: 'none'
         }}

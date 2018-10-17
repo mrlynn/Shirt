@@ -72,10 +72,6 @@ class Home extends Component {
     });
   }
 
-  setSofloo = sofloo => {
-    this.sofloo = sofloo;
-  }
-
   sofloo = null;
 
   render() {
@@ -101,7 +97,6 @@ class Home extends Component {
         {currentPage === GENERATIVE_VIEW && (
           <Generative
             purchaseShirtClicked={this.purchaseShirtClicked}
-            setSofloo={this.setSofloo}
           />
         )}
         {currentPage === SHIRT_VIEW && (

@@ -6,6 +6,16 @@ import { generateRandomLayout } from '../../sofloo/layouts';
 
 import Sofloo from './sofloo';
 
+import { 
+  AnonymousCredential,
+  Stitch,
+} from "mongodb-stitch-browser-sdk";
+
+import { 
+  AwsRequest,
+  AwsServiceClient,
+} from "mongodb-stitch-browser-services-aws";
+
 import './generative.css';
 
 const displayHeight = 500;
@@ -16,7 +26,6 @@ const randomizeAlgorithm = VERSIONS.FULL_RANDOM;
 class Generative extends Component {
   static propTypes = {
     purchaseShirtClicked: PropTypes.func.isRequired,
-    setSofloo: PropTypes.func.isRequired
   };
 
   state = {
@@ -25,12 +34,56 @@ class Generative extends Component {
   }
 
   componentDidMount = () => {
-    // Run the algorithm.
-    this.generateNewSofloo();
+    const png_blob = this.generateNewSofloo();
+  }
+
+  setImageRef = image => {
+    this.image = image;
+    this.generateSoflooImage();
+  }
+
+  convertImageToBSONBinaryObject = (file) => {
+    return new Promise(resolve => {
+      var fileReader = new FileReader();
+      fileReader.onload = event => {
+        resolve({
+          $binary: {
+            base64: event.target.result.split(",")[1],
+            subType: "00"
+          }
+        });
+      }
+      fileReader.readAsDataURL(file);
+    })
+  }
+  
+  handleFileUpload = async (client, png_blob) => {
+    client.callFunction('callme', [new File([png_blob], 'fuckme.png')]);
+
+    // Upload the image binary to S3
+    const aws = client.getServiceClient(AwsServiceClient.factory, "aws");
+    const key = `${client.auth.user.id}-${Date.now()}.png`;
+    const bucket = "mdb-sofloo";
+
+    const request = new AwsRequest.Builder()
+      .withService("s3")
+      .withAction("PutObject")
+      .withRegion("us-east-1")
+      .withArgs({
+        ACL: "public-read",
+        Bucket: bucket,
+        ContentType: 'image/png',
+        Key: key,
+        Body: await this.convertImageToBSONBinaryObject(new File([png_blob], key))
+      });
+      
+    await aws.execute(request.build());
+
+    return `https://s3.amazonaws.com/${bucket}/${key}`;
   }
 
   generateSoflooImage = () => {
-    const svgData = new XMLSerializer().serializeToString(this.sofloo);
+    const svgData = new XMLSerializer().serializeToString(this.image);
 
     const canvas = document.createElement('canvas');
     canvas.width = displayWidth;
@@ -43,9 +96,10 @@ class Generative extends Component {
     img.onload = () => {
       ctx.drawImage(img, 0, 0, displayWidth, displayHeight);
 
-      canvas.toBlob(blobData => {
-        // const blobUrl = window.URL.createObjectURL(blobData);
-        // downloadURI(blobUrl, `Concentric-${shareableShortString}.png`);
+      canvas.toBlob(async blobData => {
+        const client = Stitch.defaultAppClient;
+        const url = await this.handleFileUpload(client, blobData);
+        console.log(url);
       });
     };
   }
@@ -60,12 +114,10 @@ class Generative extends Component {
 
       this.sofloo = <Sofloo
         height={displayHeight}
-        setSvgRef={this.setSvgRef}
+        setSvgRef={this.setImageRef}
         shapes={shapes}
         width={displayWidth}
       />;
-
-      this.props.setSofloo(this.sofloo);
 
       this.setState({
         building: false,
@@ -76,10 +128,6 @@ class Generative extends Component {
 
   generateClicked = () => {
     this.generateNewSofloo();
-  }
-
-  setSvgRef = ref => {
-    // TODO: Something.
   }
 
   sofloo = null;
