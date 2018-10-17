@@ -17,10 +17,10 @@ const SHIRT_VIEW = 'SHIRT_VIEW';
 
 class Home extends Component {
   state = {
-    currentPage: SHIRT_VIEW, // GENERATIVE_VIEW
+    currentPage: GENERATIVE_VIEW,
     selectedShirtColor: Object.keys(SHIRT_COLORS)[0],
     selectedPlacement: Object.keys(SHIRT_PLACEMENTS)[0],
-    showPayWindow: true, // false
+    showPayWindow: false,
     showShareWindow: false
   };
 

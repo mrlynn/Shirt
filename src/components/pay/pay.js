@@ -20,7 +20,7 @@ class Pay extends Component {
   }
 
   state = {
-    paymentWindow: PAYMENT_WINDOWS.CHECKOUT // PAYMENT_WINDOWS.BUILD_ORDER 
+    paymentWindow: PAYMENT_WINDOWS.BUILD_ORDER 
   };
 
   continuePurchaseClicked = () => {
