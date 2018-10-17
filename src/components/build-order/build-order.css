@@ -46,23 +46,6 @@
   padding: 0px 4px;
 }
 
-.purchase-checkout-button {
-  background-color: #34B;
-  border-radius: 3px;
-  box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.5);
-  color: white;
-  display: inline-block;
-  margin-top: 16px;
-  margin-left: 4px;
-  margin-right: 4px;
-  padding: 10px 20px;
-  text-align: center;
-}
-
-.purchase-checkout-button:hover {
-  cursor: pointer;
-}
-
 .purchase-loader {
   display: inline-block;
   width: 64px;

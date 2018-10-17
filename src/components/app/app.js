@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { StripeProvider } from 'react-stripe-elements';
 
 import Router from '../../router';
 
@@ -8,7 +9,9 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <Router />
+        <StripeProvider apiKey="pk_test_12345">
+          <Router />
+        </StripeProvider>
       </div>
     );
   }

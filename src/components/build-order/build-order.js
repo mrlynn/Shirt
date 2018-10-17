@@ -110,7 +110,7 @@ class BuildOrder extends Component {
           <div className="col-1"/>
         </div>
         <div
-          className="purchase-checkout-button"
+          className="sofloo-button"
           onClick={this.props.continuePurchaseClicked}
         >
           continue

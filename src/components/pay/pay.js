@@ -12,13 +12,15 @@ const PAYMENT_WINDOWS = {
   CHECKOUT: 'CHECKOUT'
 };
 
+const subTotalMock = 25;
+
 class Pay extends Component {
   static propTypes = {
     hidePayWindow: PropTypes.func.isRequired
   }
 
   state = {
-    paymentWindow: PAYMENT_WINDOWS.BUILD_ORDER
+    paymentWindow: PAYMENT_WINDOWS.CHECKOUT // PAYMENT_WINDOWS.BUILD_ORDER 
   };
 
   continuePurchaseClicked = () => {
@@ -45,6 +47,7 @@ class Pay extends Component {
           {paymentWindow === PAYMENT_WINDOWS.CHECKOUT && (
             <Checkout
               editOrderClicked={this.editOrderClicked}
+              subtotal={subTotalMock}
             />
           )}
         </div>

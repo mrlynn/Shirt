@@ -21,7 +21,7 @@ class Shirt extends Component {
         </div>
         <div className="row">
           <div
-            className="shirt-regenerate-button"
+            className="sofloo-button-inverse"
             onClick={this.props.regenerateArtClicked}
           >regenerate</div>
         </div>

@@ -23,7 +23,7 @@ class ShirtConfig extends Component {
         <div className="sc-title">
           configure your tee
         </div>
-        <div className="sc-tee-color shirt-config-option">
+        <div className="sc-tee-color">
           <div className="sc-option-title">
             tee color: 
           </div>
@@ -37,7 +37,7 @@ class ShirtConfig extends Component {
             />;
           })}
         </div>
-        <div className="sc-design-placement shirt-config-option">
+        <div className="sc-design-placement">
           <div className="sc-option-title">
             design placement: 
           </div>
@@ -52,13 +52,13 @@ class ShirtConfig extends Component {
           })}
         </div>
         <div
-          className="sc-order-tee shirt-config-option"
+          className="sofloo-button sc-action-button"
           onClick={this.props.orderTShirtButtonClicked}
         >
           order tee
         </div>
         <div
-          className="sc-order-tee shirt-config-option"
+          className="sofloo-button-inverse sc-action-button"
           onClick={this.props.shareShirtButtonClicked}
         >
           share tee

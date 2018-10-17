@@ -1,39 +1,23 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { Elements } from 'react-stripe-elements';
 
-import './checkout.css';
+import CheckoutForm from './checkout-form';
 
 class Checkout extends Component {
   static propTypes = {
-    editOrderClicked: PropTypes.func.isRequired
+    editOrderClicked: PropTypes.func.isRequired,
+    subtotal: PropTypes.number.isRequired
   }
 
   render() {
     return (
-      <div className="checkout">
-        <div
-          className="checkout-back-button"
-          onClick={this.props.editOrderClicked}
-        >
-          <span className="checkout-back-button-icon">&lsaquo;</span> edit your order
-        </div>
-        <div className="checkout-title">
-          checkout
-        </div>
-        <div className="purchase-info-container">
-          <div className="row">
-            <div className="col-7">
-              input info
-            </div>
-            <div className="col-6">
-              Summary
-            </div>
-          </div>
-        </div>
-        <div className="purchase-checkout-button">
-          checkout
-        </div>
-      </div>
+      <Elements>
+        <CheckoutForm
+          editOrderClicked={this.props.editOrderClicked}
+          subtotal={this.props.subtotal}
+        />
+      </Elements>
     );
   }
 }
