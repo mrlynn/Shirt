@@ -1,13 +1,13 @@
 {
-  "main.css": "/Shirt/static/css/main.bdb3598e.chunk.css",
-  "main.js": "/Shirt/static/js/main.e1cb8245.chunk.js",
-  "main.js.map": "/Shirt/static/js/main.e1cb8245.chunk.js.map",
-  "static/js/1.63634101.chunk.js": "/Shirt/static/js/1.63634101.chunk.js",
-  "static/js/1.63634101.chunk.js.map": "/Shirt/static/js/1.63634101.chunk.js.map",
-  "runtime~main.js": "/Shirt/static/js/runtime~main.0bac7243.js",
-  "runtime~main.js.map": "/Shirt/static/js/runtime~main.0bac7243.js.map",
-  "static/css/main.bdb3598e.chunk.css.map": "/Shirt/static/css/main.bdb3598e.chunk.css.map",
-  "index.html": "/Shirt/index.html",
-  "precache-manifest.5ac2bd8786bfb48ea5feaba7cc3e4d7c.js": "/Shirt/precache-manifest.5ac2bd8786bfb48ea5feaba7cc3e4d7c.js",
-  "service-worker.js": "/Shirt/service-worker.js"
+  "main.css": "/static/css/main.c7a3e483.chunk.css",
+  "main.js": "/static/js/main.78548b7f.chunk.js",
+  "main.js.map": "/static/js/main.78548b7f.chunk.js.map",
+  "static/js/1.63634101.chunk.js": "/static/js/1.63634101.chunk.js",
+  "static/js/1.63634101.chunk.js.map": "/static/js/1.63634101.chunk.js.map",
+  "runtime~main.js": "/static/js/runtime~main.229c360f.js",
+  "runtime~main.js.map": "/static/js/runtime~main.229c360f.js.map",
+  "static/css/main.c7a3e483.chunk.css.map": "/static/css/main.c7a3e483.chunk.css.map",
+  "index.html": "/index.html",
+  "precache-manifest.c4d37b1a00a3fec3e44afa5e927b99ce.js": "/precache-manifest.c4d37b1a00a3fec3e44afa5e927b99ce.js",
+  "service-worker.js": "/service-worker.js"
 }
