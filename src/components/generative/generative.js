@@ -34,7 +34,7 @@ class Generative extends Component {
   }
 
   componentDidMount = () => {
-    const png_blob = this.generateNewSofloo();
+    this.generateNewSofloo();
   }
 
   setImageRef = image => {
@@ -58,8 +58,6 @@ class Generative extends Component {
   }
   
   handleFileUpload = async (client, png_blob) => {
-    client.callFunction('callme', [new File([png_blob], 'fuckme.png')]);
-
     // Upload the image binary to S3
     const aws = client.getServiceClient(AwsServiceClient.factory, "aws");
     const key = `${client.auth.user.id}-${Date.now()}.png`;
