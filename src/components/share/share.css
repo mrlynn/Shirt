@@ -31,11 +31,3 @@
   right: 0;
   bottom: 0;
 }
-
-.share-close-button {
-  font-weight: bold;
-}
-
-.share-close-button:hover {
-  cursor: pointer;
-}

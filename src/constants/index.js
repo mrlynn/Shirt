@@ -18,3 +18,8 @@ export const SHIRT_PLACEMENTS = {
   full: 'full.png',
   pocket: 'pocket.png'
 };
+
+export const SHIRT_COLORS = {
+  white: '#FFF',
+  black: '#000'
+};

@@ -7,8 +7,11 @@ class Header extends Component {
     return (
       <div className="header">
         <Link to="/">
+          <h1 className="header-title-back">
+            sofloo
+          </h1>
           <h1 className="header-title">
-            &#9702; Sofloo &#9702;
+            sofloo
           </h1>
         </Link>
       </div>

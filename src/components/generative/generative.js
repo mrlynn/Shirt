@@ -93,7 +93,7 @@ class Generative extends Component {
           {building && (
             <div className="generative-loading-container">
               <div className="generative-loading-text">
-                Loading...
+                loading...
               </div>
               {/* <img
                 className="generative-loading"
@@ -106,13 +106,13 @@ class Generative extends Component {
         </div>
         <div className="row">
           <div
-            className="generative-next-button"
+            className="generative-generate-button sofloo-button"
             onClick={this.generateClicked}
-          >Generate Art</div>
+          >generate art</div>
           <div
-            className="generative-next-button"
+            className="generative-build-tee-button sofloo-button-inverse"
             onClick={this.props.purchaseShirtClicked}
-          >Build a Tee</div>
+          >build a tee</div>
         </div>
       </div>
     );

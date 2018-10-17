@@ -23,7 +23,7 @@ class Shirt extends Component {
           <div
             className="shirt-regenerate-button"
             onClick={this.props.regenerateArtClicked}
-          >Regenerate</div>
+          >regenerate</div>
         </div>
       </div>
     );

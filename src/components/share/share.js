@@ -3,8 +3,11 @@ import React, { Component } from 'react';
 
 import './share.css';
 
+import CloseButton from '../close-button';
+
 class Share extends Component {
   static propTypes = {
+    hideShareWindow: PropTypes.func.isRequired,
     shareUrl: PropTypes.string.isRequired
   }
 
@@ -13,12 +16,9 @@ class Share extends Component {
       <div className="share-container">
         <div className="share-background" onClick={this.props.hideShareWindow} />
         <div className="share">
-          <div
-            className="share-close-button"
-            onClick={this.props.hideShareWindow}
-          >x</div>
+        <CloseButton onClick={this.props.hideShareWindow}/>
           <div className="share-title">
-            Share Url
+            share url
           </div>
           <div>
             coming soon

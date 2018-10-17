@@ -1,18 +1,92 @@
-.generative-next-button {
-  background-color: #34B;
-  border-radius: 3px;
-  box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.5);
-  color: white;
-  display: inline-block;
-  margin-top: 16px;
-  margin-left: 4px;
-  margin-right: 4px;
-  padding: 10px 20px;
-  text-align: center;
+.generative-generate-button {
+  margin: 16px;
+}
+
+.generative-generate-button::after {
+  /* box-shadow: 0 5px 15px rgba(0,0,0,0.3); */
+  /* box-shadow: 0 5px 15px #FFDA8E; */
+  box-shadow: 0 5px 15px red;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .generative-next-button:hover {
   cursor: pointer;
+}
+
+/* Decent button dropdown shadow. */
+/* box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.5); */
+
+.sofloo-button-inverse {
+  background: none;
+  border-radius: 0px;
+  border: 1px solid #5C196B;
+  color: #5C196B;
+  display: inline-block;
+  padding: 10px 20px;
+  position: relative;
+  text-align: center;
+  transition: all 0.3s ease 0s;
+}
+
+.sofloo-button-inverse:hover {
+  cursor: pointer;
+}
+
+.sofloo-button-inverse::before {
+  background: #FFDA8E;
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.5);
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 4px;
+  left: -4px;
+  transition: all 0.3s ease 0s;
+  z-index: -1;
+}
+
+.sofloo-button-inverse:hover::before {
+  box-shadow: 0 3px 1px -1px rgba(0, 0, 0, 0.5);
+  top: 0px;
+  left: 0px;
+}
+
+.sofloo-button {
+  background-color: #5C196B;
+  border-radius: 0px;
+  box-shadow: -4px 4px 0px 0px #FFDA8E;
+  color: white;
+  display: inline-block;
+  padding: 12px 22px;
+  position: relative;
+  text-align: center;
+  transition: all 0.3s ease 0s;
+}
+
+.sofloo-button:hover {
+  box-shadow: 0px 0px 0px 0px #FFDA8E;
+  cursor: pointer;
+}
+
+.sofloo-button::before {
+  content: "";
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.5);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  transition: all 0.3s ease 0s;
+  z-index: -1;
+}
+
+.sofloo-button:hover::before {
+  box-shadow: 0 3px 1px -1px rgba(0, 0, 0, 0.5);
+}
+
+.generative-build-tee-button {
+  margin: 16px;
 }
 
 .generative-loading-container {
@@ -23,7 +97,7 @@
 }
 
 .generative-loading-text {
-  color: #333;
+  color: #5C196B;
   font-size: 16px;
   padding-top: 200px;
 }

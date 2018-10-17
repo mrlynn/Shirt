@@ -1,26 +1,22 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-import { SHIRT_PLACEMENTS } from '../../constants';
+import { SHIRT_COLORS, SHIRT_PLACEMENTS } from '../../constants';
 
 import './shirt-config.css';
-
-const SHIRT_COLORS = {
-  black: '#000',
-  white: '#FFF'
-};
-
-let selectedColor = Object.keys(SHIRT_COLORS)[0];
 
 class ShirtConfig extends Component {
   static propTypes = {
     orderTShirtButtonClicked: PropTypes.func.isRequired,
+    selectNewShirtColor: PropTypes.func.isRequired,
+    selectNewShirtPlacement: PropTypes.func.isRequired,
+    selectedShirtColor: PropTypes.string.isRequired,
     selectedPlacement: PropTypes.string.isRequired,
     shareShirtButtonClicked: PropTypes.func.isRequired
   }
 
   render() {
-    const { selectedPlacement } = this.props;
+    const { selectedPlacement, selectedShirtColor } = this.props;
 
     return (
       <div className="shirt-config">
@@ -33,9 +29,10 @@ class ShirtConfig extends Component {
           </div>
           {Object.keys(SHIRT_COLORS).map((color) => {
             return <div
-              className={`sc-color-option ${selectedColor === color ? 'sc-color-selected' : ''}`}
+              className={`sc-color-option ${selectedShirtColor === color ? 'sc-color-selected' : ''}`}
               key={color}
               title={color}
+              onClick={() => this.props.selectNewShirtColor(color)}
               style={{backgroundColor: SHIRT_COLORS[color]}}
             />;
           })}
@@ -49,6 +46,7 @@ class ShirtConfig extends Component {
               className={`sc-placement-option ${selectedPlacement === placement ? 'sc-placement-selected' : ''}`}
               key={placement}
               alt={placement}
+              onClick={() => this.props.selectNewShirtPlacement(placement)}
               src={SHIRT_PLACEMENTS[placement]}
             />;
           })}
