@@ -29,8 +29,7 @@ class Generative extends Component {
 
   state = {
     building: true,
-    shapes: [],
-    soflooRef: null
+    shapes: []
   }
 
   componentDidMount = () => {
@@ -39,7 +38,6 @@ class Generative extends Component {
 
   setImageRef = image => {
     this.generateSoflooImage(image);
-    // this.setState({ soflooRef: image })
   }
 
   convertImageToBSONBinaryObject = (file) => {

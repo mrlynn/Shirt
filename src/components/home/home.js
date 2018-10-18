@@ -10,10 +10,15 @@ import Share from '../share';
 import ShirtConfig from '../shirt-config';
 import ShirtPreview from '../shirt-preview';
 
+import StitchApp from '../stitch';
+
 import { SHIRT_COLORS, SHIRT_PLACEMENTS } from '../../constants';
 
 const GENERATIVE_VIEW = 'GENERATIVE_VIEW';
 const SHIRT_VIEW = 'SHIRT_VIEW';
+
+const stitch = new StitchApp()
+stitch.authenticate()
 
 class Home extends Component {
   state = {
@@ -77,8 +82,9 @@ class Home extends Component {
     this.setState({ currentImageUrl: url })
   }
 
-  generateMockupsClicked = async (url) => {
-    // const mockups = await this.generateMockups(url)
+  generateMockupsClicked = async () => {
+    const mockups = await stitch.generateMockups(this.state.currentImageUrl)
+    // do something with them here
   }
 
   sofloo = null;
