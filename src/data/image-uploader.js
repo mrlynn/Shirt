@@ -12,26 +12,26 @@ stitchClient.auth
   .loginWithCredential(new AnonymousCredential())
   .then(showUserInterface)
 
-// This function is executed when "Upload Image File" is clicked
+// When a user chooses a design they like this function is called to upload the design image to s3.
 export function handleFileUpload() {
   // Grab the file from the input element
   const file = document.getElementById("file-input").files[0];
   if (!file) { return unsetUploadingState().then(noFileError) }
 
-  // Process the image file
+  // Process the image file.
   convertImageToBSONBinaryObject(file)
-    // Upload the image binary to S3
+    // Upload the image binary to S3.
     .then(result =>{
       const aws = stitchClient.getServiceClient(AwsServiceClient.factory, "AWS_S3");
       const key = `${stitchClient.auth.user.id}-${file.name}`;
       const bucket = "stitch-quickstarts";
 
       const args = {
-         ACL: "public-read",
-         Bucket: bucket,
-         ContentType: file.type,
-         Key: key,
-         Body: result
+        ACL: "public-read",
+        Bucket: bucket,
+        ContentType: file.type,
+        Key: key,
+        Body: result
       };
 
       const request = new AwsRequest.Builder()

@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 import './shirt.css';
-import { SHIRT_COLORS } from '../../constants';
 
 class Shirt extends Component {
   static propTypes = {

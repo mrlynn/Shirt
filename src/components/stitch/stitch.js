@@ -97,7 +97,8 @@ class StitchApp {
     if (result.status === 'completed') {
       return result.mockups;
     } else if (code === 404) {
-      throw 'invalid task'
+      alert('Unable to generate mockups. Please refresh & try again.');
+      console.log('result', result);
     } else {
       return await this.getMockupsFromTask(taskId)
     }
