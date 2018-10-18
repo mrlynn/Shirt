@@ -15,8 +15,8 @@ export const VERSIONS = {
 
 
 export const SHIRT_PLACEMENTS = {
-  Pocket: 'Pocket',
-  Full: 'Full'
+  pocket: 'pocket',
+  full: 'full'
 };
 
 export const SHIRT_COLORS = {
