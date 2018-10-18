@@ -1,7 +1,7 @@
 import {
   Stitch,
   AnonymousCredential
-} from "mongodb-stitch-browser-sdk";
+} from 'mongodb-stitch-browser-sdk';
 
 class StitchApp {
   constructor() {
@@ -22,11 +22,11 @@ class StitchApp {
 
   generateMockups = async (graphicURL) => {
     const variants = [
-      { color: "White", size: "M", id: 4874 },
-      { color: "Black", size: "M", id: 4867 }
+      { color: 'White', size: 'M', id: 4874 },
+      { color: 'Black', size: 'M', id: 4867 }
     ];
 
-    const placements = ["full", "pocket"];
+    const placements = ['full', 'pocket'];
     const variantIds = variants.map(v => v.id);
 
     console.log('placements', placements)
@@ -36,14 +36,14 @@ class StitchApp {
       const tempMockups = await this.getMockupsFromTask(taskId);
 
       return tempMockups.map(mockup => {
-        const variantId = mockup["variant_ids"][0];
+        const variantId = mockup['variant_ids'][0];
         const color = variants.filter(v => v.id === variantId)[0];
 
         return {
           variantId,
           color,
           placement,
-          mockupURL: mockup["mockup_url"]
+          mockupURL: mockup['mockup_url']
         };
       });
     });
@@ -62,7 +62,7 @@ class StitchApp {
       left: 0
     };
 
-    if (placement === "pocket") {
+    if (placement === 'pocket') {
       graphicPosition.width = 900;
       graphicPosition.height = 900;
       graphicPosition.top = 100;
@@ -70,13 +70,13 @@ class StitchApp {
     }
 
     const action = {
-      action: "generateMockup",
+      action: 'generateMockup',
       productId: 108,
       variant_ids: variantIds,
-      format: "png",
+      format: 'png',
       files: [
         {
-          placement: "front",
+          placement: 'front',
           image_url: graphicURL,
           position: graphicPosition
         }
@@ -96,10 +96,10 @@ class StitchApp {
 
     const { code, result } = JSON.parse(response);
 
-    if (result.status === "completed") {
+    if (result.status === 'completed') {
       return result.mockups;
     } else if (code === 404) {
-      throw "invalid task"
+      throw 'invalid task'
     } else {
       return await this.getMockupsFromTask(taskId)
     }

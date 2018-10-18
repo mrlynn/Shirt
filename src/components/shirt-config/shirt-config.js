@@ -47,7 +47,7 @@ class ShirtConfig extends Component {
               key={placement}
               alt={placement}
               onClick={() => this.props.selectNewShirtPlacement(placement)}
-              src={SHIRT_PLACEMENTS[placement]}
+              src={`${SHIRT_PLACEMENTS[placement]}.png`}
             />;
           })}
         </div>

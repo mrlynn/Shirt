@@ -10,6 +10,7 @@ import ShapeDef from './shape-def';
 class Sofloo extends Component {
   static propTypes = {
     height: PropTypes.number.isRequired,
+    setSoflooRef: PropTypes.func.isRequired,
     shapes: PropTypes.array.isRequired,
     width: PropTypes.number.isRequired,
   };
@@ -75,7 +76,7 @@ class Sofloo extends Component {
       <svg
         className="concentric-js-visual-container"
         height={height}
-        ref={this.props.setSvgRef}
+        ref={ref => this.props.setSoflooRef(ref)}
         style={{
           background: 'none'
         }}
