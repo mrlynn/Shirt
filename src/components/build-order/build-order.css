@@ -22,8 +22,13 @@
   text-align: right;
 }
 
+.purchase-info-amount {
+  padding-top: 6px;
+}
+
 .purchase-add-another {
   color: #5C196B;
+  font-weight: bold;
   padding-top: 6px;
 }
 .purchase-add-another:hover {
@@ -37,13 +42,37 @@
 }
 
 .purchase-remove-item {
+  /* color: red; */
   font-weight: bold;
+  padding-top: 8px;
+}
+
+.purchase-remove-item:hover {
+  cursor: pointer;
+}
+
+.purchase-input-quantity {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-shadow: none;
+  font-size: 16px;
+  padding: 8px 10px;
+  outline: none;
+  width: 90%;
+}
+
+.purchase-input-quantity:focus {
+  border: 1px solid #5C196B;
 }
 
 .purchase-subtotal-container {
   border: 1px solid black;
   border-radius: 2px;
   padding: 0px 4px;
+}
+
+.purchase-subtotal-title {
+  padding-top: 8px;
 }
 
 .purchase-loader {

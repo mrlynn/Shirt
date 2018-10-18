@@ -120,6 +120,8 @@ class CheckoutForm extends Component {
                   </div>
                 </label>
               </div>
+
+              
               <div className="checkout-input-item">
                 <label>
                   <input
@@ -187,13 +189,75 @@ class CheckoutForm extends Component {
                   value={this.state.billingRegion}
                   onChange={this.selectBillingRegion} />
               </div>
+
+
+
               {!sameShippingAndBilling && (
                 <div className="checkout-section">
                   <div className="checkout-section-title">
                     Shipping info
                   </div>
+                  <div className="checkout-input-item">
+                    <label>
+                      <input
+                        className="checkout-input-field"
+                        name="shippingName"
+                        placeholder="Name"
+                        type="text"
+                        value={this.state.shippingName}
+                        onChange={this.handleInputChange} />
+                    </label>
+                  </div>
+                  <div className="checkout-input-item">
+                    <label>
+                      <input
+                        className="checkout-input-field"
+                        name="billingAddress"
+                        placeholder="Shipping address"
+                        type="text"
+                        value={this.state.billingAddress}
+                        onChange={this.handleInputChange} />
+                    </label>
+                  </div>
+                  <div className="checkout-input-item">
+                    <label>
+                      <input
+                        className="checkout-input-field"
+                        name="billingCity"
+                        placeholder="Shipping city"
+                        type="text"
+                        value={this.state.billingCity}
+                        onChange={this.handleInputChange} />
+                    </label>
+                  </div>
+                  <div className="checkout-input-item">
+                    <label>
+                      <input
+                        className="checkout-input-field"
+                        name="billingZip"
+                        placeholder="Shipping zip"
+                        type="text"
+                        value={this.state.billingZip}
+                        onChange={this.handleInputChange} />
+                    </label>
+                  </div>
+                  <div className="checkout-input-item">
+                    <div className="checkout-item-label">
+                      Country &amp; Region
+                    </div>
+                    <CountryDropdown
+                      value={this.state.billingCountry}
+                      onChange={this.selectBillingCountry} />
+                    <RegionDropdown
+                      country={this.state.billingCountry}
+                      value={this.state.billingRegion}
+                      onChange={this.selectBillingRegion} />
+                  </div>
                 </div>
               )}
+
+
+
               <div className="checkout-section">
                 <div className="checkout-section-title">
                   Payment info
@@ -207,6 +271,9 @@ class CheckoutForm extends Component {
                 />
               </div>
             </div>
+
+
+
             <div className="col-4">
               <div className="checkout-prices">
                 <div className="row">

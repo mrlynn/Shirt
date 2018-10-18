@@ -47,6 +47,7 @@ export function handleFileUpload() {
         .finally(unsetUploadingState);
     
     }).catch(err => {
+      alert('Error uploading your image to the servers. Please refresh & try again.');
       console.log('error:', err);
     });
 }

@@ -167,7 +167,6 @@ class Home extends Component {
         const client = Stitch.defaultAppClient;
         const url = await this.handleFileUpload(client, blobData);
         this.setCurrentImageUrl(url);
-        console.log(url);
       });
     };
   }

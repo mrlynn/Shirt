@@ -12,7 +12,7 @@ const PAYMENT_WINDOWS = {
   CHECKOUT: 'CHECKOUT'
 };
 
-const subTotalMock = 25;
+const subTotalMock = 70;
 
 class Pay extends Component {
   static propTypes = {

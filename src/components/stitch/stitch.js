@@ -29,8 +29,6 @@ class StitchApp {
     const placements = ['full', 'pocket'];
     const variantIds = variants.map(v => v.id);
 
-    console.log('placements', placements)
-
     const mockups = placements.map(async (placement) => {
       let taskId = await this.startMockupTask(graphicURL, variantIds, placement);
       const tempMockups = await this.getMockupsFromTask(taskId);
@@ -65,8 +63,8 @@ class StitchApp {
     if (placement === 'pocket') {
       graphicPosition.width = 900;
       graphicPosition.height = 900;
-      graphicPosition.top = 100;
-      graphicPosition.left = 1200;
+      graphicPosition.top = 160;
+      graphicPosition.left = 1050;
     }
 
     const action = {
